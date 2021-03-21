@@ -1,0 +1,22 @@
+service: ${self:custom.SERVICE_NAMESPACE}
+
+custom:
+  stages:
+    - tst
+    - prd
+  SERVICE_NAMESPACE: ${opt:STAGE, 'prd'}-sls-api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  #region: ${env:AWS_REGION_NAME}
+  region: us-east-1
+  environment: ${file(env.${opt:STAGE, 'prd'}.yml)}
+
+functions:
+  - ${file(src/routes/users.yml)}
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
