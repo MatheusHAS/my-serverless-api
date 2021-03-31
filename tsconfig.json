@@ -5,9 +5,11 @@
     "lib": ["es6", "DOM"],
     "moduleResolution": "node",
     "rootDir": "./src",
+    "baseUrl": "./src/",
     "outDir": ".build",
     "sourceMap": true,
     "allowJs": true,
+    "esModuleInterop": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noImplicitThis": true,
@@ -17,7 +19,10 @@
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["*"]
+    }
   },
   "exclude": ["node_modules"]
 }

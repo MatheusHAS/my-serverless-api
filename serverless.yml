@@ -20,3 +20,4 @@ functions:
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-tscpaths

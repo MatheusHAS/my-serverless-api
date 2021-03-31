@@ -1,9 +1,15 @@
-import { APIGatewayEvent, APIGatewayEventRequestContext, Callback } from 'aws-lambda'
+import { APIGatewayEvent, Callback } from 'aws-lambda'
+import middy from '@middy/core'
+import validator from '@middy/validator'
+import middlewares from '@/middlewares'
+import { UserValidatorSchema } from '@/models'
 
-export const register = (event: APIGatewayEvent, context: APIGatewayEventRequestContext, callback: Callback) => {
-  return callback(null, {
+export const register = middy((event: APIGatewayEvent, context: any, callback: Callback) =>
+  callback(null, {
     body: JSON.stringify({
       example: true,
     }),
   })
-}
+)
+  .use(middlewares)
+  .use(validator({ inputSchema: UserValidatorSchema }))
