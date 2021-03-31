@@ -5,13 +5,16 @@ custom:
     - tst
     - prd
   SERVICE_NAMESPACE: ${opt:STAGE, 'prd'}-sls-api
+  DB_CONNECTION_URI: ${env:DB_CONNECTION_URI}
+  AWS_REGION_NAME: us-east-1
+  # set this variable on your ENVIRONMENTS
+  # DB_CONNECTION_URI: mongodb+srv://USER_HERE:PASSWORD_HERE@yourhost.net/DATABASENAME?retryWrites=true&w=majority
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
-  #region: ${env:AWS_REGION_NAME}
-  region: us-east-1
+  region: ${self:custom.AWS_REGION_NAME}
   environment: ${file(env.${opt:STAGE, 'prd'}.yml)}
 
 functions:
