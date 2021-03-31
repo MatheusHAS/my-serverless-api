@@ -1,6 +1,7 @@
 import { Document, Schema, Model, model } from 'mongoose'
 import { genSaltSync, hashSync } from 'bcrypt'
 import { IUser } from '@/interfaces'
+import { IValidatorSchema } from '@/interfaces'
 
 export interface IUserModel extends IUser, Document {}
 
@@ -8,7 +9,7 @@ export interface UserDocument extends IUserModel {}
 
 export interface UserModel extends Model<UserDocument> {}
 
-export const UserValidatorSchema = {
+export const UserValidatorSchema: IValidatorSchema = {
   type: 'object',
   properties: {
     body: {
