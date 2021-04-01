@@ -15,7 +15,7 @@ export const UserValidatorSchema: IValidatorSchema = {
     body: {
       type: 'object',
       properties: {
-        email: { type: 'string', minLength: 1, maxLength: 64 },
+        email: { type: 'string', minLength: 6, maxLength: 64 },
         password: { type: 'string', minLength: 4, maxLength: 64 },
       },
       required: ['email', 'password'],
